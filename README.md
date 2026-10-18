@@ -6,7 +6,7 @@ A fast, Nigerian Ludo-inspired challenge game designed for Snapchat. This repo h
 
 ## Play it
 
-Open `index.html` in any browser, or play the live version on GitHub Pages (link in the repo's About section).
+Open `index.html` in any browser, or play it live at **https://khal33d-hub.github.io/Ludo-Go-v3/**.
 
 ## Rules
 
