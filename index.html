@@ -409,7 +409,7 @@ function renderStrip(pl){
   el.innerHTML = `<span class="dot"></span>
     <div class="pname">${esc(G.names[pl])}<small>${status}</small></div>
     ${isLinkP1 ? '<span></span>' : `<div class="throws" aria-label="${r.rolls} counted rolls left"><span>Rolls</span>${pips}</div>`}
-    <div class="stats"><span><b>${res.home}</b>/3 home</span><span><b>${res.left}</b> steps left</span></div>`;
+    <div class="stats"><span><b>${res.home}</b>/3 home</span><span><b>${res.left}</b> ${res.left === 1 ? 'step' : 'steps'} left</span></div>`;
   el.classList.toggle('active', !isLinkP1 && G.idx === pl && phase !== 'over' && phase !== 'between');
 }
 
@@ -543,6 +543,7 @@ function afterMove(){
 
 function endRound(){
   const pl = G.idx, res = resultOf(pl);
+  if (res.home < 3) say('ROUND OVER');
   addLog(`${who(pl)} finished: ${res.home} home, ${res.left} ${res.left === 1 ? 'step' : 'steps'} left.`);
   if (G.mode === 'local' && pl === 0){ phase = 'between'; renderAll(); return showHandover(); }
   phase = 'over'; renderAll(); showResults();
